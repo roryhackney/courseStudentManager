@@ -1,9 +1,6 @@
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 class StudentTest {
-
-    //check not null, not empty, not whitespace, not start with Student@/default
-
     //=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
     //          HAPPY PATH TESTS
     //=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
@@ -17,6 +14,8 @@ class StudentTest {
         assertEquals("astone@college.edu", student.email());
         assertEquals("123-456-7890", student.phone());
     }
+
+    //check not null, not empty, not whitespace, not start with Student@/default
     @Test
     void test_toString() {
         Student student = new Student("123456", "Stone", "Ashley", "astone@college.edu",
