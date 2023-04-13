@@ -33,6 +33,59 @@ class StudentTest {
         assertThrows(IllegalArgumentException.class,
                 () -> new Student(null, "X", "X", "X", "X"));
         assertThrows(IllegalArgumentException.class,
-                () -> new Student("",   "X", "X", "X", "X"));
+                () -> new Student("  ", "X", "X", "X", "X"));
+    }
+
+    @Test
+    void test_constructorNullEmptyLastName() {
+        assertThrows(IllegalArgumentException.class,
+                () -> new Student("X", null, "X", "X", "X"));
+        assertThrows(IllegalArgumentException.class,
+                () -> new Student("X", "  ", "X", "X", "X"));
+    }
+
+    @Test
+    void test_constructorNullEmptyFirstName() {
+        assertThrows(IllegalArgumentException.class,
+                () -> new Student("X", "X", null, "X", "X"));
+        assertThrows(IllegalArgumentException.class,
+                () -> new Student("X", "X", "  ", "X", "X"));
+    }
+
+    @Test
+    void test_constructorNullEmptyEmail() {
+        assertThrows(IllegalArgumentException.class,
+                () -> new Student("X", "X", "X", null, "X"));
+        assertThrows(IllegalArgumentException.class,
+                () -> new Student("X", "X", "X", "  ", "X"));
+    }
+
+    @Test
+    void test_constructorNullEmptyPhone() {
+        assertThrows(IllegalArgumentException.class,
+                () -> new Student("X", "X", "X", "X", null));
+        assertThrows(IllegalArgumentException.class,
+                () -> new Student("X", "X", "X", "X", "  "));
+    }
+
+    @Test
+    void test_compareTo() {
+        Student bobby = new Student("654321", "Angler", "Bobby", "Y", "Z");
+        Student alice = new Student("123456", "Xavier", "Alice", "X", "Y");
+        assertTrue(bobby.compareTo(alice) < 0);
+        assertTrue(alice.compareTo(bobby) > 0);
+        assertEquals(0, bobby.compareTo(bobby));
+        Student kevin = new Student("654321", "Angler", "Kevin", "A", "B");
+        assertTrue(bobby.compareTo(kevin) < 0);
+        assertTrue(kevin.compareTo(bobby) > 0);
+        Student bobby2 = new Student("234561", "Angler", "Bobby", "Y", "Z");
+        assertTrue(bobby.compareTo(bobby2) > 0);
+        Student bobby3 = new Student("654321", "Angler", "Bobby", "Z", "A");
+        assertEquals(0, bobby.compareTo(bobby3));
+    }
+
+    @Test
+    void test_equals() {
+
     }
 }
