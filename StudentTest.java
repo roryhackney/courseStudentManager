@@ -1,9 +1,19 @@
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
+
+import java.awt.*;
+
+/**
+ * Tests for Student class
+ */
 class StudentTest {
     //=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
     //          HAPPY PATH TESTS
     //=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+    /**
+     * Checks constructor creates Student and get methods return correct data
+     */
     @Test
     void test_constructorAndGets() {
         Student student = new Student("123456", "Stone", "Ashley", "astone@college.edu",
@@ -15,19 +25,23 @@ class StudentTest {
         assertEquals("123-456-7890", student.phone());
     }
 
-    //check not null, not empty, not whitespace, not start with Student@/default
+    /**
+     * Checks not null, not empty, not whitespace, does not start with Student@/default
+     */
     @Test
     void test_toString() {
         Student student = new Student("123456", "Stone", "Ashley", "astone@college.edu",
                 "123-456-7890");
         assertFalse(student.toString().isBlank());
         assertNotEquals("Student@", student.toString().substring(0, 8));
-
     }
     // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
     //          EXCEPTION TESTS
     //=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 
+    /**
+     * Checks null or empty id throws exception
+     */
     @Test
     void test_constructorNullEmptyId() {
         assertThrows(IllegalArgumentException.class,
@@ -36,6 +50,9 @@ class StudentTest {
                 () -> new Student("  ", "X", "X", "X", "X"));
     }
 
+    /**
+     * Checks null or empty lastName throws exception
+     */
     @Test
     void test_constructorNullEmptyLastName() {
         assertThrows(IllegalArgumentException.class,
@@ -44,6 +61,9 @@ class StudentTest {
                 () -> new Student("X", "  ", "X", "X", "X"));
     }
 
+    /**
+     * Checks null or empty firstName throws exception
+     */
     @Test
     void test_constructorNullEmptyFirstName() {
         assertThrows(IllegalArgumentException.class,
@@ -52,6 +72,9 @@ class StudentTest {
                 () -> new Student("X", "X", "  ", "X", "X"));
     }
 
+    /**
+     * Checks null or empty email throws exception
+     */
     @Test
     void test_constructorNullEmptyEmail() {
         assertThrows(IllegalArgumentException.class,
@@ -60,6 +83,9 @@ class StudentTest {
                 () -> new Student("X", "X", "X", "  ", "X"));
     }
 
+    /**
+     * Checks null or empty phone throws exception
+     */
     @Test
     void test_constructorNullEmptyPhone() {
         assertThrows(IllegalArgumentException.class,
@@ -68,24 +94,34 @@ class StudentTest {
                 () -> new Student("X", "X", "X", "X", "  "));
     }
 
+    /**
+     * Checks comparisons return appropriate relationships
+     */
     @Test
     void test_compareTo() {
         Student bobby = new Student("654321", "Angler", "Bobby", "Y", "Z");
         Student alice = new Student("123456", "Xavier", "Alice", "X", "Y");
+        Student b = bobby;
         assertTrue(bobby.compareTo(alice) < 0);
         assertTrue(alice.compareTo(bobby) > 0);
-        assertEquals(0, bobby.compareTo(bobby));
-        Student kevin = new Student("654321", "Angler", "Kevin", "A", "B");
-        assertTrue(bobby.compareTo(kevin) < 0);
-        assertTrue(kevin.compareTo(bobby) > 0);
-        Student bobby2 = new Student("234561", "Angler", "Bobby", "Y", "Z");
-        assertTrue(bobby.compareTo(bobby2) > 0);
-        Student bobby3 = new Student("654321", "Angler", "Bobby", "Z", "A");
-        assertEquals(0, bobby.compareTo(bobby3));
+        assertEquals(0, bobby.compareTo(b));
+        Student anna = new Student("234561", "Angler", "Anna", "Y", "Z");
+        assertEquals(0, bobby.compareTo(anna));
     }
 
+    /**
+     * Checks Students are equal with same last name, else not equal
+     */
     @Test
     void test_equals() {
-
+        Student bobby = new Student("654321", "Angler", "Bobby", "Y", "Z");
+        Student alice = new Student("123456", "Xavier", "Alice", "X", "Y");
+        Student b = bobby;
+        Student anna = new Student("234561", "Angler", "Anna", "Y", "Z");
+        assertFalse(bobby.equals(alice));
+        assertTrue(bobby.equals(b));
+        assertFalse(bobby.equals(null));
+        assertFalse(bobby.equals(new Point()));
+        assertTrue(bobby.equals(anna));
     }
 }
