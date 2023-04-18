@@ -1,5 +1,8 @@
 import java.util.Arrays;
 
+/**
+ * Interface for StudentManager class, manages course and student data
+ */
 public interface StudentManagerInterface {
 
     // StudentManager should have one constructor, an empty one (no parameters)

@@ -20,4 +20,10 @@ public class Utility {
             throw new IllegalArgumentException(context + " cannot be blank");
         }
     }
+
+    public static void verifyIndexInRange(String context, int index, int maxIndex) {
+        if (index < 0 || index > maxIndex) {
+            throw new IllegalArgumentException(context + " must be 0 through " + maxIndex);
+        }
+    }
 }

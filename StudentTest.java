@@ -1,6 +1,5 @@
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
-
 import java.awt.*;
 
 /**
@@ -35,7 +34,7 @@ class StudentTest {
         assertFalse(student.toString().isBlank());
         assertNotEquals("Student@", student.toString().substring(0, 8));
     }
-    // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+    //=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
     //          EXCEPTION TESTS
     //=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 
