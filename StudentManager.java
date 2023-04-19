@@ -43,6 +43,7 @@ public class StudentManager implements StudentManagerInterface {
         scanCourses.close();
 
         //if students file not found exit with array length 0
+
         File studentsFile = new File("src/Students.csv");
         Scanner scanStudents;
         try {
@@ -84,8 +85,8 @@ public class StudentManager implements StudentManagerInterface {
     @Override
     public int getStudentCount() {
         int sum = 0;
-        for (int courseIndex = 0; courseIndex < students.length; courseIndex++) {
-            sum += students[courseIndex].length;
+        for (Student[] oneClass : students) {
+            sum += oneClass.length;
         }
         return sum;
     }

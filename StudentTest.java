@@ -117,10 +117,10 @@ class StudentTest {
         Student alice = new Student("123456", "Xavier", "Alice", "X", "Y");
         Student b = bobby;
         Student anna = new Student("234561", "Angler", "Anna", "Y", "Z");
-        assertFalse(bobby.equals(alice));
-        assertTrue(bobby.equals(b));
-        assertFalse(bobby.equals(null));
-        assertFalse(bobby.equals(new Point()));
-        assertTrue(bobby.equals(anna));
+        assertNotEquals(bobby, alice);
+        assertEquals(bobby, b);
+        assertNotEquals(null, bobby);
+        assertNotEquals(bobby, new Point());
+        assertEquals(bobby, anna);
     }
 }

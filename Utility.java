@@ -21,6 +21,12 @@ public class Utility {
         }
     }
 
+    /**
+     * Verifies index is in range 0 through maxIndex and throws appropriate exception
+     * @param context  context for the item, used as a label, usually the variable name
+     * @param index    the index to be verified
+     * @param maxIndex maximum value the index should be
+     */
     public static void verifyIndexInRange(String context, int index, int maxIndex) {
         if (index < 0 || index > maxIndex) {
             throw new IllegalArgumentException(context + " must be 0 through " + maxIndex);
