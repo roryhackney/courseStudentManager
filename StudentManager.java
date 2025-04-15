@@ -20,7 +20,7 @@ public class StudentManager implements StudentManagerInterface {
      */
     public StudentManager() {
         //if courseNames file not found exit with array length 0
-        File courseFile = new File("src/Courses.csv");
+        File courseFile = new File("Courses.csv");
         Scanner scanCourses;
         try {
             scanCourses = new Scanner(courseFile);
@@ -44,7 +44,7 @@ public class StudentManager implements StudentManagerInterface {
 
         //if students file not found exit with array length 0
 
-        File studentsFile = new File("src/Students.csv");
+        File studentsFile = new File("Students.csv");
         Scanner scanStudents;
         try {
             scanStudents = new Scanner(studentsFile);
